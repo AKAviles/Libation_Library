@@ -2,7 +2,9 @@ package com.aaviles.cocktail.service.impl;
 
 
 import com.aaviles.cocktail.models.Cocktail;
+import com.aaviles.cocktail.models.Ingredient;
 import com.aaviles.cocktail.repository.CocktailRepository;
+import com.aaviles.cocktail.repository.IngredientRepository;
 import com.aaviles.cocktail.service.CocktailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +15,14 @@ import java.util.List;
 public class CocktailServiceImpl implements CocktailService {
 
     private CocktailRepository cocktailRepository;
+    private IngredientRepository ingredientRepository;
+
+
 
     @Autowired
-    public CocktailServiceImpl(CocktailRepository cocktailRepository){
+    public CocktailServiceImpl(CocktailRepository cocktailRepository, IngredientRepository ingredientRepository) {
         this.cocktailRepository = cocktailRepository;
-
+        this.ingredientRepository = ingredientRepository;
     }
 
 
@@ -33,6 +38,7 @@ public class CocktailServiceImpl implements CocktailService {
 
     @Override
     public Cocktail saveCocktail(Cocktail cocktail) {
+        List<Ingredient> ingredientList = ingredientRepository.saveAll(cocktail.getIngredientList());
         return cocktailRepository.save(cocktail);
     }
 }
