@@ -4,4 +4,7 @@ import com.aaviles.cocktail.models.Cocktail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
+
+    Cocktail findByName(String name);
+
 }

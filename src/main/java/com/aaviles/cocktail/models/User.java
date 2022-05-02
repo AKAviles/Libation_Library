@@ -4,6 +4,8 @@ import com.aaviles.cocktail.models.dto.UserDto;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Data
@@ -27,6 +29,7 @@ public class User {
     private String password;
 
     @Column
+    @NotNull
     private Integer age;
 
     @Column

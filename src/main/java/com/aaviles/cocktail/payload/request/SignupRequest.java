@@ -2,10 +2,7 @@ package com.aaviles.cocktail.payload.request;
 
 import com.aaviles.cocktail.models.Interest;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +20,7 @@ public class SignupRequest {
     @Email
     private String email;
 
-    @NotBlank
+    @NotNull
     @Min(value = 21, message = "Need to be 21 or older to register.")
     private Integer age;
 
@@ -32,7 +29,7 @@ public class SignupRequest {
 
     private List<Interest> interests;
 
-    private Set<String> role;
+    private Set<String> roles;
 
     @NotBlank
     @Size(min = 6, max = 40)
@@ -86,12 +83,12 @@ public class SignupRequest {
         this.interests = interests;
     }
 
-    public Set<String> getRole() {
-        return role;
+    public Set<String> getRoles() {
+        return roles;
     }
 
-    public void setRole(Set<String> role) {
-        this.role = role;
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 
     public String getPassword() {
