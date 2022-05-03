@@ -38,7 +38,7 @@ public class CocktailServiceImpl implements CocktailService {
 
     @Override
     public Cocktail saveCocktail(Cocktail cocktail) {
-        List<Ingredient> ingredientList = ingredientRepository.saveAll(cocktail.getIngredientList());
+
         return cocktailRepository.save(cocktail);
     }
 }

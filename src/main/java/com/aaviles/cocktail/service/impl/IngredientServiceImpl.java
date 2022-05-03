@@ -4,9 +4,10 @@ import com.aaviles.cocktail.models.Ingredient;
 import com.aaviles.cocktail.repository.IngredientRepository;
 import com.aaviles.cocktail.service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class IngredientServiceImpl implements IngredientService {
 
     private IngredientRepository ingredientRepository;

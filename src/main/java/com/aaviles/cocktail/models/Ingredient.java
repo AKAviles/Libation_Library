@@ -13,9 +13,9 @@ public class Ingredient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "ingredient_name", nullable = false, unique = true)
+    @Column(name = "ingredient_name", nullable = false, unique = false)
     private String name;
 
     @Column(name= "amount", nullable = false)
-    private int amount;
+    private double amount;
 }

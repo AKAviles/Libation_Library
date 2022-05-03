@@ -4,7 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -29,10 +31,10 @@ public class Cocktail {
     @Column
     private String complexity;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    List<Ingredient> ingredientList = new ArrayList<>();
+        @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    Set<Ingredient> ingredientList = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    List<Tag> tagList = new ArrayList<>();
+    Set<Tag> tagList = new HashSet<>();
 
 }
