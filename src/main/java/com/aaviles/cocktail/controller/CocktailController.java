@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/cocktail")
@@ -24,9 +26,11 @@ public class CocktailController {
 
     @PostMapping
     public ResponseEntity<Cocktail> saveCocktail(@RequestBody Cocktail cocktail){
-
         return new ResponseEntity<>(cocktailService.saveCocktail(cocktail), HttpStatus.CREATED);
-
     }
 
+    @GetMapping
+    public ResponseEntity<List<Cocktail>> getAllCocktails() {
+        return new ResponseEntity<>(cocktailService.getAllCocktails(), HttpStatus.OK);
+    }
 }
