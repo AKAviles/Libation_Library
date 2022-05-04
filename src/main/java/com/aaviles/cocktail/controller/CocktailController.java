@@ -37,7 +37,7 @@ public class CocktailController {
     }
 
     @GetMapping("/tag")
-    public ResponseEntity<List<Cocktail>> getCocktailsByTag(@RequestParam(value = "tagName") String tagName) {
+    public ResponseEntity<List<Cocktail>> getCocktailsByTag(@RequestParam(value="tagName") String tagName) {
         return new ResponseEntity<>(cocktailService.getAllCocktailsByTag(tagName), HttpStatus.OK);
     }
 }
