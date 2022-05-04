@@ -1,6 +1,7 @@
 package com.aaviles.cocktail.controller;
 
 import com.aaviles.cocktail.models.Cocktail;
+import com.aaviles.cocktail.models.Tag;
 import com.aaviles.cocktail.service.CocktailService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -32,5 +34,10 @@ public class CocktailController {
     @GetMapping
     public ResponseEntity<List<Cocktail>> getAllCocktails() {
         return new ResponseEntity<>(cocktailService.getAllCocktails(), HttpStatus.OK);
+    }
+
+    @GetMapping("/tag")
+    public ResponseEntity<List<Cocktail>> getCocktailsByTag(@RequestParam(value = "tagName") String tagName) {
+        return new ResponseEntity<>(cocktailService.getAllCocktailsByTag(tagName), HttpStatus.OK);
     }
 }

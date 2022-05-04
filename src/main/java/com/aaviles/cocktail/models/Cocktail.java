@@ -35,6 +35,11 @@ public class Cocktail {
     Set<Ingredient> ingredientList = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "cocktails_tagList",
+        joinColumns = @JoinColumn(name = "cocktail_id",
+        referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id",
+        referencedColumnName = "id"))
     Set<Tag> tagList = new HashSet<>();
 
 }
