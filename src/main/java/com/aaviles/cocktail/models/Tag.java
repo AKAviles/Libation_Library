@@ -18,6 +18,5 @@ public class Tag {
     @Column(name = "tag_name", nullable = false)
     private String tagName;
 
-    @ManyToMany(mappedBy = "tagList")
-    private Set<Cocktail> cocktails = new HashSet<>();
+
 }

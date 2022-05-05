@@ -46,6 +46,6 @@ public class CocktailServiceImpl implements CocktailService {
 
    @Override
    public List<Cocktail> getAllCocktailsByTag(String tagName) {
-        return cocktailRepository.findCocktailsWithTag(tagName);
+        return cocktailRepository.findCocktailsByTagList_TagName(tagName);
     }
 }

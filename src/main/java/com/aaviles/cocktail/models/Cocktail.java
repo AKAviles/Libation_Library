@@ -3,10 +3,7 @@ package com.aaviles.cocktail.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @Entity
@@ -42,4 +39,16 @@ public class Cocktail {
         referencedColumnName = "id"))
     Set<Tag> tagList = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cocktail cocktail = (Cocktail) o;
+        return Objects.equals(id, cocktail.id) && Objects.equals(name, cocktail.name) && Objects.equals(method, cocktail.method) && Objects.equals(estCompletionTime, cocktail.estCompletionTime) && Objects.equals(complexity, cocktail.complexity) && Objects.equals(ingredientList, cocktail.ingredientList) && Objects.equals(tagList, cocktail.tagList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, method, estCompletionTime, complexity, ingredientList, tagList);
+    }
 }
