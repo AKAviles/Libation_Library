@@ -22,33 +22,28 @@ public class Cocktail {
     @Column
     private String method;
 
-    @Column(name = "completion_time")
-    private Integer estCompletionTime;
-
     @Column
     private String complexity;
 
-        @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Ingredient> ingredientList = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "cocktails_tagList",
-        joinColumns = @JoinColumn(name = "cocktail_id",
-        referencedColumnName = "id"),
-        inverseJoinColumns = @JoinColumn(name = "tag_id",
-        referencedColumnName = "id"))
     Set<Tag> tagList = new HashSet<>();
+
+    @Column
+    private String instructions;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cocktail cocktail = (Cocktail) o;
-        return Objects.equals(id, cocktail.id) && Objects.equals(name, cocktail.name) && Objects.equals(method, cocktail.method) && Objects.equals(estCompletionTime, cocktail.estCompletionTime) && Objects.equals(complexity, cocktail.complexity) && Objects.equals(ingredientList, cocktail.ingredientList) && Objects.equals(tagList, cocktail.tagList);
+        return Objects.equals(id, cocktail.id) && Objects.equals(name, cocktail.name) && Objects.equals(method, cocktail.method) && Objects.equals(complexity, cocktail.complexity) && Objects.equals(ingredientList, cocktail.ingredientList) && Objects.equals(tagList, cocktail.tagList) && Objects.equals(instructions, cocktail.instructions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, method, estCompletionTime, complexity, ingredientList, tagList);
+        return Objects.hash(id, name, method, complexity, ingredientList, tagList, instructions);
     }
 }

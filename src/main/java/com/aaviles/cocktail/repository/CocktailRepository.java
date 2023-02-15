@@ -19,5 +19,6 @@ public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
 //    @Query(value = "SELECT c FROM Cocktail c JOIN c.tagList t WHERE t.tagName = :tagName")
 //    List<Cocktail> findCocktailsWithTag(String tagName);
     List<Cocktail> findCocktailsByTagList_TagName(String tagName);
+    Set<Cocktail> findByTagListIn(List<Tag> tags);
 
 }

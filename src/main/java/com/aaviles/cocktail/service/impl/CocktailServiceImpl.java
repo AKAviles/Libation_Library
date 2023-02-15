@@ -17,14 +17,12 @@ import java.util.Set;
 public class CocktailServiceImpl implements CocktailService {
 
     private CocktailRepository cocktailRepository;
-    private IngredientRepository ingredientRepository;
 
 
 
     @Autowired
-    public CocktailServiceImpl(CocktailRepository cocktailRepository, IngredientRepository ingredientRepository) {
+    public CocktailServiceImpl(CocktailRepository cocktailRepository) {
         this.cocktailRepository = cocktailRepository;
-        this.ingredientRepository = ingredientRepository;
     }
 
 
@@ -40,12 +38,16 @@ public class CocktailServiceImpl implements CocktailService {
 
     @Override
     public Cocktail saveCocktail(Cocktail cocktail) {
-
         return cocktailRepository.save(cocktail);
     }
 
    @Override
    public List<Cocktail> getAllCocktailsByTag(String tagName) {
         return cocktailRepository.findCocktailsByTagList_TagName(tagName);
+    }
+
+    @Override
+    public Set<Cocktail> getAllCocktailsByTags(List<Tag> tags) {
+        return cocktailRepository.findByTagListIn(tags);
     }
 }

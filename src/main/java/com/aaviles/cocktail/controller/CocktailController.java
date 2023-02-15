@@ -36,8 +36,18 @@ public class CocktailController {
         return new ResponseEntity<>(cocktailService.getAllCocktails(), HttpStatus.OK);
     }
 
-    @GetMapping("/{tagName}")
-    public ResponseEntity<List<Cocktail>> getCocktailsByTag(@PathVariable("tagName") String tagName) {
+    @GetMapping
+    public ResponseEntity<Cocktail> getCocktailByName(@RequestParam(value="cocktailName") String cocktailName) {
+        return new ResponseEntity<>(cocktailService.findByName(cocktailName), HttpStatus.OK);
+    }
+
+    @GetMapping("/tag")
+    public ResponseEntity<List<Cocktail>> getCocktailsByTag(@RequestParam(value="tagName") String tagName) {
         return new ResponseEntity<>(cocktailService.getAllCocktailsByTag(tagName), HttpStatus.OK);
+    }
+
+    @GetMapping("/{tags}")
+    public ResponseEntity<Set<Cocktail>> getCocktailsByTags(@PathVariable List<Tag> tags) {
+        return new ResponseEntity<>(cocktailService.getAllCocktailsByTags(tags), HttpStatus.OK);
     }
 }
